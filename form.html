@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Admission Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    section {
+      margin-bottom: 20px;
+      padding-left: 10px;
+      border-left: 4px solid #0077cc;
+    }
+    section:nth-child(2) { border-color: #10b981; }
+    section:nth-child(3) { border-color: #f43f5e; }
+    section:nth-child(4) { border-color: #6366f1; }
+    section:nth-child(5) { border-color: #f59e0b; }
+    section:nth-child(6) { border-color: #9ca3af; }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    label span {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    textarea { resize: vertical; }
+    .grid {
+      display: grid;
+      gap: 15px;
+    }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-primary { background: #0284c7; color: white; }
+    .btn-success { background: #16a34a; color: white; }
+    .btn-danger { background: #dc2626; color: white; }
+    .btn-outline { background: white; border: 1px solid #ccc; }
+    .summary, .success {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .summary { background: #fff; border: 1px solid #ddd; }
+    .success { background: #ecfdf5; border-left: 4px solid #34d399; color: #065f46; }
+    @media print { .no-print { display: none !important; } body { background: white; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Admission Form</h1>
+    <p style="font-size:14px;color:#555;">Fill in the details and click <strong>Preview Details</strong> to review before submitting.</p>
+
+    <form id="admissionForm" onsubmit="handleSubmit(event)">
+      <!-- Personal Information -->
+      <section>
+        <h2>Personal Information</h2>
+        <div class="grid grid-3">
+          <label><span>Full Name *</span><input name="fullName" required></label>
+          <label><span>Date of Birth *</span><input type="date" name="dob" required></label>
+          <label><span>Gender *</span>
+            <select name="gender" required>
+              <option value="">Select</option><option>Male</option><option>Female</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Blood Group</span><input name="bloodGroup"></label>
+          <label><span>Nationality</span><input name="nationality"></label>
+          <label><span>Category</span>
+            <select name="category">
+              <option value="">Select</option><option>General</option><option>OBC</option><option>SC</option><option>ST</option><option>EWS</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <!-- Contact Information -->
+      <section>
+        <h2>Contact Information</h2>
+        <div class="grid grid-2">
+          <label><span>Permanent Address *</span><textarea name="permanentAddress" required rows="2"></textarea></label>
+          <label><span>Current Address</span><textarea name="currentAddress" rows="2"></textarea></label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Student Phone *</span><input name="phone" required maxlength="10"></label>
+          <label><span>Parent Phone *</span><input name="parentPhone" required maxlength="10"></label>
+          <label><span>Email</span><input type="email" name="email"></label>
+        </div>
+      </section>
+
+      <!-- Parent Details -->
+      <section>
+        <h2>Parent / Guardian Details</h2>
+        <div class="grid grid-3">
+          <label><span>Father's Name</span><input name="fatherName"></label>
+          <label><span>Father's Occupation</span><input name="fatherOcc"></label>
+          <label><span>Mother's Name</span><input name="motherName"></label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Mother's Occupation</span><input name="motherOcc"></label>
+          <label><span>Annual Family Income</span><input name="income"></label>
+          <label><span>Guardian Relation</span><input name="guardianRelation"></label>
+        </div>
+      </section>
+
+      <!-- Academic Information -->
+      <section>
+        <h2>Academic Information</h2>
+        <div class="grid grid-2">
+          <label><span>Previous School</span><input name="prevSchool"></label>
+          <label><span>Board / University</span><input name="board"></label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Last Class</span><input name="lastClass"></label>
+          <label><span>Year of Passing</span><input type="number" name="passingYear"></label>
+          <label><span>Marks / CGPA</span><input name="marks"></label>
+        </div>
+        <div class="grid grid-2">
+          <label><span>Admission Sought *</span><input name="admissionFor" required></label>
+          <label><span>Preferred Stream</span><input name="stream"></label>
+        </div>
+      </section>
+
+      <!-- Declaration -->
+      <section>
+        <h2>Declaration</h2>
+        <p style="font-size:14px;color:#555;">I hereby declare that the information provided is true and correct.</p>
+        <div class="grid grid-3">
+          <label><span>Student Signature *</span><input name="studentSign" required></label>
+          <label><span>Parent Signature *</span><input name="parentSign" required></label>
+          <div style="font-size:14px;color:#555;">
+            Date: <span id="todayDate"></span><br>
+            Place: <input name="place">
+          </div>
+        </div>
+      </section>
+
+      <div class="buttons no-print">
+        <button type="button" class="btn-primary" onclick="previewDetails()">Preview Details</button>
+        <button type="submit" class="btn-success">Submit</button>
+        <button type="button" class="btn-danger" onclick="resetForm()">Reset</button>
+        <button type="button" class="btn-outline" onclick="print()">Print</button>
+      </div>
+    </form>
+
+    <div id="summary" class="summary hidden">
+      <h3>Preview — Student Details</h3>
+      <div id="summaryContent"></div>
+      <div class="buttons">
+        <button onclick="confirmSubmit()" class="btn-success">Confirm & Save<

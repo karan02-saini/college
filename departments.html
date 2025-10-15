@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - Arya P.G. College</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .departments-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://static.photos/education/1200x630/5');
+            background-size: cover;
+            background-position: center;
+        }
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <img src="http://static.photos/education/200x200/1" alt="College Logo" class="h-12 w-12 rounded-full">
+                    <span class="font-bold text-xl text-blue-800">Arya P.G. College</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-blue-600">Courses</a>
+                    <a href="departments.html" class="text-blue-800 font-medium hover:text-blue-600">Departments</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="departments-hero text-white py-32 px-4">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Academic Departments</h1>
+            <p class="text-xl mb-8">Specialized centers of learning and research excellence</p>
+        </div>
+    </section>
+
+    <!-- Science Department -->
+    <section id="science" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i data-feather="atom" class="text-blue-700"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800">Department of Science</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                <div data-aos="fade-right">
+                    <p class="text-gray-600 mb-4">The Science Department at Arya P.G. College is committed to fostering scientific inquiry and innovation. Our faculty members are dedicated researchers and educators who provide students with a strong foundation in scientific principles.</p>
+                    <p class="text-gray-600 mb-6">We offer state-of-the-art laboratories, research opportunities, and industry collaborations to ensure our students receive hands-on experience with modern scientific techniques and technologies.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Physics</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Chemistry</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Mathematics</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Computer Science</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Electronics</span>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <img src="http://static.photos/science/640x360/2" alt="Science Department" class="w-full rounded-lg shadow-lg">
+                </div>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Faculty Members</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg" data-aos="fade-up">
+                    <img src="http://static.photos/people/200x200/6" alt="Faculty" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h4 class="text-xl font-semibold text-center mb-1">Dr. Sanjay Verma</h4>
+                    <p class="text-blue-700 text-center mb-3">Professor & Head</p>
+                    <p class="text-gray-600 text-center text-sm">Ph.D. in Physics, 25 years of teaching experience</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/people/200x200/7" alt="Faculty" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h4 class="text-xl font-semibold text-center mb-1">Dr. Neha Sharma</h4>
+                    <p class="text-blue-700 text-center mb-3">Associate Professor</p>
+                    <p class="text-gray-600 text-center text-sm">Ph.D. in Chemistry, Research in Nanotechnology</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/people/200x200/8" alt="Faculty" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h4 class="text-xl font-semibold text-center mb-1">Prof. Rajiv Malhotra</h4>
+                    <p class="text-blue-700 text-center mb-3">Assistant Professor</p>
+                    <p class="text-gray-600 text-center text-sm">M.Tech in Computer Science, AI Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commerce Department -->
+    <section id="commerce" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center mb-8">
+                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i data-feather="dollar-sign" class="text-blue-700"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800">Department of Commerce</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                <div data-aos="fade-right">
+                    <p class="text-gray-600 mb-4">The Commerce Department at Arya P.G. College prepares students for successful careers in business, finance, and accounting. Our curriculum combines theoretical knowledge with practical applications.</p>
+                    <p class="text-gray-600 mb-6">We emphasize developing analytical skills, business acumen, and ethical decision-making through case studies, projects, and industry interactions. Our graduates are well-prepared for the dynamic world of commerce and business.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Accounting</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Finance</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Business Management</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Taxation</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Banking</span>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <img src="http://static.photos/office/640x360/2" alt="Commerce Department" class="w-full rounded-lg shadow-lg">
+                </div>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Faculty Members</h3>
+            <div class="grid md:grid-cols-3 gap
+</body>
+</html>

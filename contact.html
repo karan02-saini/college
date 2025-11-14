@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Admission Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    section {
+      margin-bottom: 20px;
+      padding-left: 10px;
+      border-left: 4px solid #0077cc;
+    }
+    section:nth-child(2) { border-color: #10b981; }
+    section:nth-child(3) { border-color: #f43f5e; }
+    section:nth-child(4) { border-color: #6366f1; }
+    section:nth-child(5) { border-color: #f59e0b; }
+    section:nth-child(6) { border-color: #9ca3af; }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    label span {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea { resize: vertical; }
+    .grid {
+      display: grid;
+      gap: 15px;
+    }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-primary { background: #0284c7; color: white; }
+    .btn-success { background: #16a34a; color: white; }
+    .btn-danger { background: #dc2626; color: white; }
+    .btn-outline { background: white; border: 1px solid #ccc; }
+    .summary, .success {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .summary { background: #fff; border: 1px solid #ddd; }
+    .success { background: #ecfdf5; border-left: 4px solid #34d399; color: #065f46; }
+    .hidden { display: none; }
+    table.summary-table { width: 100%; border-collapse: collapse; }
+    table.summary-table td, table.summary-table th { padding: 8px; border: 1px solid #eee; vertical-align: top; }
+    table.summary-table th { text-align: left; background:#f3f4f6; width:30%; }
+    @media print { .no-print { display: none !important; } body { background: white; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Admission Form</h1>
+    <p style="font-size:14px;color:#555;">Fill in the details and click <strong>Preview Details</strong> to review before submitting.</p>
+
+    <form id="admissionForm" onsubmit="handleSubmit(event)">
+      <!-- Personal Information -->
+      <section>
+        <h2>Personal Information</h2>
+        <div class="grid grid-3">
+          <label><span>Full Name *</span><input name="fullName" required></label>
+          <label><span>Date of Birth *</span><input type="date" name="dob" required></label>
+          <label><span>Gender *</span>
+            <select name="gender" required>
+              <option value="">Select</option><option>Male</option><option>Female</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Blood Group</span><input name="bloodGroup"></label>
+          <label><span>Nationality</span><input name="nationality"></label>
+          <label><span>Category</span>
+            <select name="category">
+              <option value="">Select</option><option>General</option><option>OBC</option><option>SC</option><option>ST</option><option>EWS</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <!-- Contact Information -->
+      <section>
+        <h2>Contact Information</h2>
+        <div class="grid grid-2">
+          <label><span>Permanent Address *</span><textarea name="permanentAddress" required rows="2"></textarea></label>
+          <label><span>Current Address</span><textarea name="currentAddress" rows="2"></textarea></label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Student Phone *</span><input name="phone" required maxlength="10" pattern="\d{10}" title="Enter 10 digit mobile number"></label>
+          <label><span>Parent Phone *</span><input name="parentPhone" required maxlength="10" pattern="\d{10}" title="Enter 10 digit mobile number"></label>
+          <label><span>Email</span><input type="email" name="email"></label>
+        </div>
+      </section>
+
+      <!-- Parent Details -->
+      <section>
+        <h2>Parent / Guardian Details</h2>
+        <div class="grid grid-3">
+          <label><span>Father's Name</span><input name="fatherName"></label>
+          <label><span>Father's Occupation</span><input name="fatherOcc"></label>
+          <label><span>Mother's Name</span><input name="motherName"></label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Mother's Occupation</span><input name="motherOcc"></label>
+          <label><span>Annual Family Income</span><input name="income" type="number" min="0" step="1"></label>
+          <label><span>Guardian Relation</span><input name="guardianRelation"></label>
+        </div>
+      </section>
+
+      <!-- Academic Information -->
+      <section>
+        <h2>Academic Information</h2>
+        <div class="grid grid-2">
+          <label><span>Previous School</span><input name="prevSchool"></label>
+          <label><span>Board / University</span><input name="board"></label>
+        </div>
+        <div class="grid grid-3">
+          <label><span>Last Class</span><input name="lastClass"></label>
+          <label><span>Year of Passing</span><input type="number" name="passingYear" min="1900" max="2100"></label>
+          <label><span>Marks / CGPA</span><input name="marks"></label>
+        </div>
+        <div class="grid grid-2">
+          <label><span>Admission Sought *</span><input name="admissionFor" required></label>
+          <label><span>Preferred Stream</span><input name="stream"></label>
+        </div>
+      </section>
+
+      <!-- Declaration -->
+      <section>
+        <h2>Declaration</h2>
+        <p style="font-size:14px;color:#555;">I hereby declare that the information provided is true and correct.</p>
+        <div class="grid grid-3">
+          <label><span>Student Signature *</span><input name="studentSign" required></label>
+          <label><span>Parent Signature *</span><input name="parentSign" required></label>
+          <div style="font-size:14px;color:#555;">
+            Date: <span id="todayDate"></span><br>
+            Place: <input name="place">
+          </div>
+        </div>
+      </section>
+
+      <div class="buttons no-print">
+        <button type="button" class="btn-primary" onclick="previewDetails()">Preview Details</button>
+        <button type="submit" class="btn-success">Submit</button>
+        <button type="button" class="btn-danger" onclick="resetForm()">Reset</button>
+        <button type="button" class="btn-outline" onclick="window.print()">Print</button>
+      </div>
+    </form>
+
+    <div id="summary" class="summary hidden">
+      <h3>Preview — Student Details</h3>
+      <div id="summaryContent"></div>
+      <div class="buttons">
+        <button onclick="confirmSubmit()" class="btn-success">Confirm & Save</button>
+        <button onclick="editFromPreview()" class="btn-outline">Edit</button>
+      </div>
+    </div>
+
+    <div id="successMsg" class="success hidden">
+      <strong>Saved successfully.</strong>
+      <div id="savedDataPreview" style="margin-top:10px; font-size:13px;"></div>
+    </div>
+  </div>
+
+  <script>
+    // Populate today's date in declaration
+    (function setDate() {
+      const d = new Date();
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      document.getElementById('todayDate').innerText = dd + '-' + mm + '-' + yyyy;
+    })();
+
+    function getFormDataObj() {
+      const form = document.getElementById('admissionForm');
+      const fd = new FormData(form);
+      const obj = {};
+      for (const [k, v] of fd.entries()) {
+        obj[k] = v ? v.trim() : '';
+      }
+      return obj;
+    }
+
+    function previewDetails() {
+      const data = getFormDataObj();
+      // Basic front-end validation for required fields
+      const required = ['fullName','dob','gender','permanentAddress','phone','parentPhone','admissionFor','studentSign','parentSign'];
+      for (const key of required) {
+        if (!data[key]) {
+          alert('Please fill required field: ' + key);
+          return;
+        }
+      }
+      // Build summary table
+      const rows = [
+        ['Full Name', data.fullName],
+        ['Date of Birth', data.dob],
+        ['Gender', data.gender],
+        ['Blood Group', data.bloodGroup || '-'],
+        ['Nationality', data.nationality || '-'],
+        ['Category', data.category || '-'],
+        ['Permanent Address', data.permanentAddress],
+        ['Current Address', data.currentAddress || '-'],
+        ['Student Phone', data.phone],
+        ['Parent Phone', data.parentPhone],
+        ['Email', data.email || '-'],
+        ['Father\'s Name', data.fatherName || '-'],
+        ['Father\'s Occupation', data.fatherOcc || '-'],
+        ['Mother\'s Name', data.motherName || '-'],
+        ['Mother\'s Occupation', data.motherOcc || '-'],
+        ['Annual Family Income', data.income || '-'],
+        ['Guardian Relation', data.guardianRelation || '-'],
+        ['Previous School', data.prevSchool || '-'],
+        ['Board / University', data.board || '-'],
+        ['Last Class', data.lastClass || '-'],
+        ['Year of Passing', data.passingYear || '-'],
+        ['Marks / CGPA', data.marks || '-'],
+        ['Admission Sought', data.admissionFor],
+        ['Preferred Stream', data.stream || '-'],
+        ['Student Signature', data.studentSign],
+        ['Parent Signature', data.parentSign],
+        ['Place', data.place || '-'],
+        ['Preview Date', document.getElementById('todayDate').innerText]
+      ];
+
+      let html = '<table class="summary-table"><tbody>';
+      for (const r of rows) {
+        html += `<tr><th>${escapeHtml(r[0])}</th><td>${escapeHtml(r[1])}</td></tr>`;
+      }
+      html += '</tbody></table>';
+      document.getElementById('summaryContent').innerHTML = html;
+      document.getElementById('summary').classList.remove('hidden');
+      // Scroll into view to show preview
+      document.getElementById('summary').scrollIntoView({behavior: 'smooth'});
+    }
+
+    function editFromPreview() {
+      document.getElementById('summary').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleSubmit(event) {
+      // Prevent default and do preview first, then show confirm prompt
+      event.preventDefault();
+      // If summary is visible, we treat that as user previewed; else show preview
+      if (document.getElementById('summary').classList.contains('hidden')) {
+        previewDetails();
+        alert('Review the Preview and click "Confirm & Save" to complete submission.');
+        return;
+      }
+      // If summary already visible and user clicked Submit, confirm and save
+      confirmSubmit();
+    }
+
+    function confirmSubmit() {
+      const data = getFormDataObj();
+      // Final validation again
+      if (!data.fullName || !data.phone || !data.parentPhone) {
+        alert('Please ensure required fields are filled.');
+        return;
+      }
+      // Save to localStorage as example (simulate saving to server)
+      const saved = JSON.parse(localStorage.getItem('admissions') || '[]');
+      const entry = Object.assign({ id: Date.now() }, data);
+      saved.push(entry);
+      localStorage.setItem('admissions', JSON.stringify(saved));
+      // Show success message and a short preview
+      document.getElementById('savedDataPreview').innerHTML = `
+        <div><strong>Name:</strong> ${escapeHtml(entry.fullName)} &nbsp; | &nbsp;
+        <strong>Phone:</strong> ${escapeHtml(entry.phone)} &nbsp; | &nbsp;
+        <strong>Admission For:</strong> ${escapeHtml(entry.admissionFor)}</div>
+        <div style="margin-top:8px; font-size:12px; color:#065f46;">Record saved locally (localStorage).</div>
+      `;
+      document.getElementById('successMsg').classList.remove('hidden');
+      // Hide preview area and reset form (optional)
+      document.getElementById('summary').classList.add('hidden');
+      // Optionally keep the form filled; here we clear to production-like behavior:
+      document.getElementById('admissionForm').reset();
+      // Update today's date again for cleared form
+      (function setDateAgain() {
+        const d = new Date();
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        document.getElementById('todayDate').innerText = dd + '-' + mm + '-' + yyyy;
+      })();
+      // Scroll to success message
+      document.getElementById('successMsg').scrollIntoView({behavior: 'smooth'});
+    }
+
+    function resetForm() {
+      if (confirm('Reset the form? All data will be cleared.')) {
+        document.getElementById('admissionForm').reset();
+        document.getElementById('summary').classList.add('hidden');
+        document.getElementById('successMsg').classList.add('hidden');
+        (function setDateAgain() {
+          const d = new Date();
+          const yyyy = d.getFullYear();
+          const mm = String(d.getMonth() + 1).padStart(2, '0');
+          const dd = String(d.getDate()).padStart(2, '0');
+          document.getElementById('todayDate').innerText = dd + '-' + mm + '-' + yyyy;
+        })();
+      }
+    }
+
+    // Small helper to avoid HTML injection in previews
+    function escapeHtml(text) {
+      if (text === null || text === undefined) return '';
+      return String(text)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;')
+        .replaceAll('\n', '<br>');
+    }
+  </script>
+</body>
+</html>
